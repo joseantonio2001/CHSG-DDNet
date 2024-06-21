@@ -242,7 +242,7 @@ class RestorationsEvalColorDataset(Dataset):
     def __getitem__(self, idx):
         file = self.filelist[idx]
         thename, ext = splitext(basename(file))
-        file_psf = join(self.psf_dir, thename+'_psf.npy')
+        file_psf = join(self.psf_dir, thename+'_psf.mat')
         #y = rgb2ycbcr(cv2.imread(file, 1).transpose((2,0,1))[::-1])
         y = np.asarray(Image.open(file))
         
@@ -256,8 +256,9 @@ class RestorationsEvalColorDataset(Dataset):
         y = torch.from_numpy(y)
         y_color = y[1:].contiguous()
         y = y[:1].contiguous()
-        #psf = scipy.io.loadmat(file_psf)['kernel']
-        psf = np.load(file_psf)
+        #psf = scipy.io.loadmat(file_psf)['data']
+        psf = scipy.io.loadmat(file_psf)['kernel']
+        #psf = np.load(file_psf)
         psf = torch.from_numpy(psf.astype(np.float64)).squeeze().unsqueeze(dim=0)
 
         return [y, y_color, psf]

@@ -112,14 +112,14 @@ if __name__ == '__main__':
     fd_black2 = FadeToBlackMatrixNoPad([config.IM_SIZE+2*config.MAX_PSF_SIZE, config.IM_SIZE+2*config.MAX_PSF_SIZE], [config.MAX_PSF_SIZE, config.MAX_PSF_SIZE])
     fd_black2 = fd_black2.cuda()
     preprocess_train = Preprocess_deblur(
-        epsilon=config.EPS_WIENER, 
+        epsilon=config.EPS_WIENER,
         fd_black1=fd_black1,
         fd_black2=fd_black2
     )
     
     #Train
-    G.fit(loss_fn=CharbonnierLoss(eps=config.EPS), 
-          opt_class=optim.Adam, 
+    G.fit(loss_fn=CharbonnierLoss(eps=config.EPS),
+          opt_class=optim.Adam,
           opt_args={'lr': config.LR_1, 'weight_decay': config.W_DECAY},
           epochs=config.EPOCHS,
           train_loader=train_data_loader, 
@@ -138,7 +138,7 @@ if __name__ == '__main__':
               'eval_SSIM': SSIMWrapper(config.BORDER)
             },
           log_interval=30,
-          step_loggers=[console_logger(['step',  'train']),],
+          step_loggers=[console_logger(['step', 'train']),],
           epoch_loggers=\
             [
                 console_logger(keys_loss),

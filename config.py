@@ -3,10 +3,10 @@
 '''
 
 #Paths
-TRAIN_FILE_PATH     = ''    # Path to Train Data folder
-EVAL_FILE_PATH      = ''    # Path to Validation Data folder
-W_PATH_SAVE         = ''    # Path where to save the y model's weights
-W_COLOR_PATH_SAVE   = ''    # Path where to save the cbcr model's weights
+TRAIN_FILE_PATH     = '/data/datasets/Restoration/Dataset_CORREGIDO/numpy/train/'    # Path to Train Data folder
+EVAL_FILE_PATH      = '/data/datasets/Restoration/Dataset_CORREGIDO/numpy/val/'    # Path to Validation Data folder
+W_PATH_SAVE         = 'weights_train/'    # Path where to save the y model's weights
+W_COLOR_PATH_SAVE   = 'weights_train/'    # Path where to save the cbcr model's weights
 
 #Data Parameters
 IM_SIZE             = 128   # Image size to use during training

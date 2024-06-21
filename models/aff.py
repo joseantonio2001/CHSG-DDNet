@@ -3,7 +3,10 @@ import torch.nn as nn
 
 from models.tse.base_model import BaseModel
 from models.fft_blur_deconv_pytorch import  wiener_filter, mul_fourier_conj, mul_fourier
+import warnings
 
+
+warnings.filterwarnings("ignore")
 
 class AAplusModel(torch.nn.Module):
     def __init__(self, H, fd_black, epsilon):
